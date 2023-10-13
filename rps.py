@@ -9,7 +9,7 @@ while True:
     inp = input(
     "Enter ... \n1 for Rock, \n2 for Paper, \n3 for Scissors \n"
 )
-    if inp == "done" or inp == "Done" or inp == "DONE" :
+    if inp.lower() == "done" :
         break
     try:
         player = int(inp)
