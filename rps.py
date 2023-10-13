@@ -1,5 +1,8 @@
 #Play a game of Rock, Paper and scissors with Python
 import random
+game_count = 0
+your_wins = 0
+your_loss = 0
 
 while True:
     print("")
@@ -10,6 +13,9 @@ while True:
     "Enter ... \n1 for Rock, \n2 for Paper, \n3 for Scissors \n"
 )
     if inp.lower() == "done" :
+        print("....................")
+        print("Game count: ", game_count , "\n Your wins: ", your_wins, "\n your loss: ", your_loss)
+        print("....................")
         break
     try:
         player = int(inp)
@@ -38,18 +44,24 @@ while True:
 
 
     if player == 1 and comp == 3:
+        your_wins += 1
         print("you win 🎉🥳")
 
 
     elif player == 2 and comp == 1:
+        your_wins += 1
         print("you win 🎉🥳")
 
 
     elif player == 3 and comp == 2:
+        your_wins += 1
         print("you win 🎉🥳")
 
     elif player == comp :
         print("Tie Game😮")
 
     else:
+        your_loss += 1
         print("Python wins 🐍")
+
+    game_count += 1
