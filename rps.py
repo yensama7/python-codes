@@ -1,6 +1,6 @@
 #Play a game of Rock, Paper and scissors with Python
+import random
 def game():
-    import random
     game_count = 0
     your_wins = 0
     your_loss = 0
