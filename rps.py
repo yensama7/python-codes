@@ -66,6 +66,4 @@ def game():
             print("Python wins 🐍")
 
         game_count += 1
-
-play = game()
-play()
+game()
