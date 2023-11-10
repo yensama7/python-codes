@@ -1,6 +1,10 @@
 # a requirement for this game is the turtle module
 # use py -m pip install turtle on windows
 # use python3 -m pip install turtle on mac
+# up - w
+# down - s
+# left - a
+# right - d
 
 import turtle
 import time
