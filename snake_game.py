@@ -15,6 +15,9 @@ delay = 0.1
 #score
 score = 0
 high_score = 0
+with open("snake_highscore.txt", mode="w") as h_score:
+    h_score.write(f"{high_score}")
+    h_score.close()
 
 #screen setup****************************************
 window = turtle.Screen()
@@ -51,7 +54,9 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0,260)
-pen.write(f"Score: 0  High Score: 0", align ="center", font=("courier", 24, "normal"))
+with open("snake_highscore.txt", mode="r") as h_score:
+    content = h_score.read()
+pen.write(f"Score: 0  High Score: {content}", align ="center", font=("courier", 24, "normal"))
 
 
 # movement functions********************************
@@ -118,6 +123,9 @@ while True:
         score = 0
         pen.clear()
         pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
+        with open("snake_highscore.txt", mode="w") as h_score:
+            h_score.write(f"{high_score}")
+            h_score.close()
         #reset delay 
         delay = 0.1
 
@@ -142,11 +150,15 @@ while True:
 
         #score increment
         score += 10
+        pen.clear()
+        pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
         if score > high_score:
             high_score = score
             pen.clear()
             pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
-            
+            with open("snake_highscore.txt", mode="w") as h_score:
+                h_score.write(f"{high_score}")
+                h_score.close()
 
     #collision with body
     for i in segments:
@@ -163,7 +175,9 @@ while True:
             score = 0
             pen.clear()
             pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
-
+            with open("snake_highscore.txt", mode="w") as h_score:
+                h_score.write(f"{high_score}")
+                h_score.close()
             #reset delay 
             delay = 0.1
             
