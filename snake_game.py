@@ -14,10 +14,12 @@ delay = 0.1
 
 #score
 score = 0
-high_score = 0
-with open("snake_highscore.txt", mode="w") as h_score:
-    h_score.write(f"{high_score}")
-    h_score.close()
+file_path = "snake_highscore.txt"
+try:
+    with open(file_path, 'x') as file:
+        file.write("snake")
+except FileExistsError:
+    open(file_path, 'a').close()
 
 #screen setup****************************************
 window = turtle.Screen()
@@ -122,10 +124,9 @@ while True:
         #reset score
         score = 0
         pen.clear()
-        pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
-        with open("snake_highscore.txt", mode="w") as h_score:
-            h_score.write(f"{high_score}")
-            h_score.close()
+        with open("snake_highscore.txt", mode="r") as h_score:
+            content = h_score.read()
+        pen.write(f"Score: {score}  High Score: {content}", align ="center", font=("courier", 24, "normal"))
         #reset delay 
         delay = 0.1
 
@@ -151,8 +152,10 @@ while True:
         #score increment
         score += 10
         pen.clear()
-        pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
-        if score > high_score:
+        with open("snake_highscore.txt", mode="r") as h_score:
+            content = h_score.read()
+        pen.write(f"Score: {score}  High Score: {content}", align ="center", font=("courier", 24, "normal"))
+        if score > int(content):
             high_score = score
             pen.clear()
             pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
@@ -174,10 +177,9 @@ while True:
             #reset score
             score = 0
             pen.clear()
-            pen.write(f"Score: {score}  High Score: {high_score}", align ="center", font=("courier", 24, "normal"))
-            with open("snake_highscore.txt", mode="w") as h_score:
-                h_score.write(f"{high_score}")
-                h_score.close()
+            with open("snake_highscore.txt", mode="r") as h_score:
+                content = h_score.read()
+            pen.write(f"Score: {score}  High Score: {content}", align ="center", font=("courier", 24, "normal"))
             #reset delay 
             delay = 0.1
             
