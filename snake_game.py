@@ -17,7 +17,7 @@ score = 0
 file_path = "snake_highscore.txt"
 try:
     with open(file_path, 'x') as file:
-        file.write("snake")
+        file.write("0")
 except FileExistsError:
     open(file_path, 'a').close()
 
@@ -155,6 +155,9 @@ while True:
         with open("snake_highscore.txt", mode="r") as h_score:
             content = h_score.read()
         pen.write(f"Score: {score}  High Score: {content}", align ="center", font=("courier", 24, "normal"))
+        print(type(content))
+        print(content)
+        print(type(score))
         if score > int(content):
             high_score = score
             pen.clear()
